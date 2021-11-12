@@ -19,10 +19,10 @@ namespace ELTE_FuggvenyRajzolo
 
         void Főprogram(PictureBox vászon)
         {
-            double xa = 0;
-            double xf = 3 * Math.PI;
+            double xa = -10 * Math.PI;
+            double xf = 10 * Math.PI;
             int xh = vászon.Size.Width;
-            Func<double, double> f = x => Math.Sin(x);
+            Func<double, double> f = x => Math.Sin(x) * Math.Sin(x)/(x*x) ;
             double[] fv = Számítás(xa,xf,xh, f);
             (double ya, double yf) = Szélsőérték(xa, xf, xh, fv);
             Normálás(ya, yf,xh, fv);
@@ -84,7 +84,7 @@ namespace ELTE_FuggvenyRajzolo
 
         void Pont(int xp, int yp, Bitmap kep)
         {
-            if (yp<kep.Height)
+            if (0<yp && yp<kep.Height)
             {
                 kep.SetPixel(xp, yp, Color.White);
             }
